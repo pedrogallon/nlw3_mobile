@@ -1,39 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import React from "react";
+import { StatusBar } from "expo-status-bar";
 
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
+import { useFonts} from 'expo-font'
+import { Nunito_600SemiBold, Nunito_700Bold, Nunito_800ExtraBold} from '@expo-google-fonts/nunito'
+
+import Routes from './src/routes'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <MapView
-        style={styles.map}
-        initialRegion={{
-          latitude: -27,
-          longitude: -49.0,
-          latitudeDelta: 0,
-          longitudeDelta: 0,
-        }}
 
 
+  const [fontsLoaded] = useFonts({
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+    Nunito_800ExtraBold
+  })
 
-      />
-    </View>
+  if (!fontsLoaded){
+    return null;
+  }
+
+  return(
+    <Routes />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  map:{
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-  }
-});

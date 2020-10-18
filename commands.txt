@@ -1,0 +1,3 @@
+https://expo.io/
+
+yarn global add explo-cli
